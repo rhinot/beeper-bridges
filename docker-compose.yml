@@ -1,4 +1,6 @@
+# Each service is a separate bridge container, named according to the bridge service it runs
 services:
+
   discord:
     extends:
       file: ./common-services.yml
