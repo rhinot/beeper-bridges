@@ -1,0 +1,8 @@
+# These are the services shared by all Beeper self-hosted bridges
+services:
+  beeper-bridge:
+    image: ghcr.io/beeper/bridge-manager
+    user: 1000:1000
+    env_file: ./.env
+    restart: unless-stopped
+

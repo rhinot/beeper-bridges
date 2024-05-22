@@ -1,0 +1,51 @@
+services:
+  discord:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-discord
+    volumes:
+      - ${DATA_PATH}/beeper-discord:/data
+    environment:
+        BRIDGE_NAME: sh-discord
+
+  signal:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-signal
+    volumes:
+      - ${DATA_PATH}/beeper-signal:/data
+    environment:
+        BRIDGE_NAME: sh-signal
+  
+  gmessages:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-gmessages
+    volumes:
+      - ${DATA_PATH}/beeper-gmessages:/data
+    environment:
+        BRIDGE_NAME: sh-gmessages
+
+  instagram:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-instagram
+    volumes:
+      - ${DATA_PATH}/beeper-instagram:/data
+    environment:
+        BRIDGE_NAME: sh-instagram
+
+  whatsapp:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-whatsapp
+    volumes:
+      - ${DATA_PATH}/beeper-whatsapp:/data
+    environment:
+        BRIDGE_NAME: sh-whatsapp
+
