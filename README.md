@@ -5,13 +5,15 @@ A Docker Compose file to start most Beeper [self-hosted Bridges](https://github.
 The file structure is composed of two provided .yml files - which are provided, and one .env file - which needs to be created. They are as follows:
 - common-services.yml: This is a file that provides components used by all Beeper Bridges
 - docker-compose.yml: The primary Docker Compose file that creates a container for every Bridge
-- .env: An environment file to set your Matrix access token and your base data path for your volume storage _[Needs to be created]_
+- .env _(not included in repo)_: An environment file to set your Matrix access token, your base data path for your volume storage, and the parameters for your iMessage bridge, if you're using that bridge
 
-Once you've cloned this repo, the .env text file needs to be created and contain two variables:
+Once you've cloned this repo, the .env text file needs to be created and contain three variables (iMessage variable optional, based on whether you're using the iMessage bridge to BlueBubbles):
 ```
 MATRIX_ACCESS_TOKEN=(set your token here)
 DATA_PATH=/path/to/where/your/volumes/are
+IMESSAGE_PARAMS=--param 'bluebubbles_url=http://localhost:1234' --param 'bluebubbles_password=YOUR_PASSWORD' --param 'imessage_platform=bluebubbles'
 ```
+For more information on how to set your iMessage parameters for BlueBubbles, see [this write up](https://rentry.org/beeper_bluebubbles_bridge).
 
 ### MATRIX_ACCESS_TOKEN
 Matrix Access Token is the Access Token your Beeper account is using to access the [Matrix network](https://matrix.org/). To find this token, open your Beeper desktop client, open "Settings", then click on "Help & Abount". Scroll the bottom of the Help & Abount Section, where you'll see a "Access Token" section you'll need to expand. There you'll see your access token, which you should copy after "MATRIX_ACCESS_TOKEN" in the .env file. *This access token gives full access to your account, so do not share it with anyone.*
@@ -23,6 +25,7 @@ The compose file currently includes the following bridges:
 - Gmessages (SMS & RCS via Google Messages)
 - Signal
 - Discord
+- iMessage (BlueBubbles)
 
 Additional Bridges can be added by following the same template as the sections for each bridge provided in the compose file, which follows the following pattern:
 ```
