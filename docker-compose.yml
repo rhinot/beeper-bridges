@@ -50,4 +50,14 @@ services:
       - ${DATA_PATH}/beeper-whatsapp:/data
     environment:
         BRIDGE_NAME: sh-whatsapp
+  
+  imessage:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-imessage
+    volumes:
+      - ${DATA_PATH}/beeper-imessage:/data
+    environment:
+        BRIDGE_NAME: ${IMESSAGE_PARAMS} sh-imessage
 
