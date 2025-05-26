@@ -16,7 +16,14 @@ IMESSAGE_PARAMS=--param 'bluebubbles_url=http://localhost:1234' --param 'bluebub
 For more information on how to set your iMessage parameters for BlueBubbles, see [this write up](https://rentry.org/beeper_bluebubbles_bridge).
 
 ### MATRIX_ACCESS_TOKEN
-Matrix Access Token is the Access Token your Beeper account is using to access the [Matrix network](https://matrix.org/). To find this token, open your Beeper desktop client, open "Settings", then click on "Help & About". Scroll the bottom of the Help & Abount Section, where you'll see a "Access Token" section you'll need to expand. There you'll see your access token, which you should copy after "MATRIX_ACCESS_TOKEN" in the .env file. *This access token gives full access to your account, so do not share it with anyone.*
+Matrix Access Token is the Access Token your Beeper account is using to access the [Matrix network](https://matrix.org/). 
+
+As of Beeper desktop client v4, the Matrix Access Token is no longer available client-side. The recommended way to extract your Matrix Access Token is using bbctl. Once you locate where bbctl is located, you can run the [get_token.sh](https://github.com/rhinot/beeper-bridges/blob/main/get_token.sh) script in that same directory.
+
+If you're still running Beeper Desktop Client v3, you can still find your "Access Token" by opening "Settings", then clicking on "Help & About". Please note that while this method still works at the time of writing, it is no longer supported by Beeper support or staff.
+
+Using either method, once you locate an access token, copy it after "MATRIX_ACCESS_TOKEN" in the .env file you created from the instructions above. 
+*This access token gives full access to your account, so do not share it with anyone.*
 
 ## Bridges
 The compose file currently includes the following bridges:
