@@ -16,7 +16,7 @@ IMESSAGE_PARAMS=--param 'bluebubbles_url=http://localhost:1234' --param 'bluebub
 For more information on how to set your iMessage parameters for BlueBubbles, see [this write up](https://rentry.org/beeper_bluebubbles_bridge).
 
 ### MATRIX_ACCESS_TOKEN
-Matrix Access Token is the Access Token your Beeper account is using to access the [Matrix network](https://matrix.org/). To find this token, open your Beeper desktop client, open "Settings", then click on "Help & Abount". Scroll the bottom of the Help & Abount Section, where you'll see a "Access Token" section you'll need to expand. There you'll see your access token, which you should copy after "MATRIX_ACCESS_TOKEN" in the .env file. *This access token gives full access to your account, so do not share it with anyone.*
+Matrix Access Token is the Access Token your Beeper account is using to access the [Matrix network](https://matrix.org/). To find this token, open your Beeper desktop client, open "Settings", then click on "Help & About". Scroll the bottom of the Help & Abount Section, where you'll see a "Access Token" section you'll need to expand. There you'll see your access token, which you should copy after "MATRIX_ACCESS_TOKEN" in the .env file. *This access token gives full access to your account, so do not share it with anyone.*
 
 ## Bridges
 The compose file currently includes the following bridges:
