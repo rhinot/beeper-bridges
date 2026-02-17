@@ -27,12 +27,13 @@ Using either method, once you locate an access token, copy it after "MATRIX_ACCE
 
 ## Bridges
 The compose file currently includes the following bridges:
-- WhatsApp
-- Instagram
-- Gmessages (SMS & RCS via Google Messages)
-- Signal
 - Discord
+- Gmessages (SMS & RCS via Google Messages)
 - iMessage (BlueBubbles)
+- Instagram
+- Signal
+- Telegram
+- WhatsApp
 
 Additional Bridges can be added by following the same template as the sections for each bridge provided in the compose file, which follows the following pattern:
 ```

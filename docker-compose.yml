@@ -10,16 +10,6 @@ services:
       - ${DATA_PATH}/beeper-discord:/data
     environment:
         BRIDGE_NAME: sh-discord
-
-  signal:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
-    container_name: beeper-signal
-    volumes:
-      - ${DATA_PATH}/beeper-signal:/data
-    environment:
-        BRIDGE_NAME: sh-signal
   
   gmessages:
     extends:
@@ -31,6 +21,16 @@ services:
     environment:
         BRIDGE_NAME: sh-gmessages
 
+  imessage:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-imessage
+    volumes:
+      - ${DATA_PATH}/beeper-imessage:/data
+    environment:
+        BRIDGE_NAME: ${IMESSAGE_PARAMS} sh-imessage
+
   instagram:
     extends:
       file: ./common-services.yml
@@ -40,6 +40,26 @@ services:
       - ${DATA_PATH}/beeper-instagram:/data
     environment:
         BRIDGE_NAME: sh-instagram
+  
+  signal:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-signal
+    volumes:
+      - ${DATA_PATH}/beeper-signal:/data
+    environment:
+        BRIDGE_NAME: sh-signal
+  
+  telegram:
+    extends:
+      file: ./common-services.yml
+      service: beeper-bridge
+    container_name: beeper-telegram
+    volumes:
+      - ${DATA_PATH}/beeper-telegram:/data
+    environment:
+        BRIDGE_NAME: ${IMESSAGE_PARAMS} sh-telegram
 
   whatsapp:
     extends:
@@ -50,14 +70,4 @@ services:
       - ${DATA_PATH}/beeper-whatsapp:/data
     environment:
         BRIDGE_NAME: sh-whatsapp
-  
-  imessage:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
-    container_name: beeper-imessage
-    volumes:
-      - ${DATA_PATH}/beeper-imessage:/data
-    environment:
-        BRIDGE_NAME: ${IMESSAGE_PARAMS} sh-imessage
 
