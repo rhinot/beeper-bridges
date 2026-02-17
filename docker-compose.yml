@@ -1,73 +1,97 @@
+# --- Templates (Top Level) ---
+x-beeper-base: &beeper-base
+  image: ghcr.io/beeper/bridge-manager
+  restart: unless-stopped
+  networks:
+    - beeper-bridges_default
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+x-beeper-env: &beeper-env
+  TZ: ${TZ}
+  MATRIX_ACCESS_TOKEN: ${MATRIX_ACCESS_TOKEN}
+  DATA_PATH: /data
+
+# --- Infrastructure ---
+
+networks:
+  beeper-bridges_default:
+    name: "beeper-bridges_default"
+    driver: bridge
+
+# --- Services ---
 # Each service is a separate bridge container, named according to the bridge service it runs
 services:
-
   discord:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-discord
+    hostname: beeper-discord
     volumes:
       - ${DATA_PATH}/beeper-discord:/data
     environment:
-        BRIDGE_NAME: sh-discord
-  
+      <<: *beeper-env
+      BRIDGE_NAME: sh-discord
+
   gmessages:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-gmessages
+    hostname: beeper-gmessages
     volumes:
       - ${DATA_PATH}/beeper-gmessages:/data
     environment:
-        BRIDGE_NAME: sh-gmessages
+      <<: *beeper-env
+      BRIDGE_NAME: sh-gmessages
 
   imessage:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-imessage
+    hostname: beeper-imessage
     volumes:
       - ${DATA_PATH}/beeper-imessage:/data
     environment:
-        BRIDGE_NAME: ${IMESSAGE_PARAMS} sh-imessage
+      <<: *beeper-env
+      BRIDGE_NAME: sh-imessage
+      IMESSAGE_PARAMS: "--param bluebubbles_url=${BLUEBUBBLES_URL} --param bluebubbles_password=${BLUEBUBBLES_PW} --param imessage_platform=bluebubbles"
 
   instagram:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-instagram
+    hostname: beeper-instagram
     volumes:
       - ${DATA_PATH}/beeper-instagram:/data
     environment:
-        BRIDGE_NAME: sh-instagram
-  
+      <<: *beeper-env
+      BRIDGE_NAME: sh-instagram
+
   signal:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-signal
+    hostname: beeper-signal
     volumes:
       - ${DATA_PATH}/beeper-signal:/data
     environment:
-        BRIDGE_NAME: sh-signal
-  
+      <<: *beeper-env
+      BRIDGE_NAME: sh-signal
+
   telegram:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-telegram
+    hostname: beeper-telegram
     volumes:
       - ${DATA_PATH}/beeper-telegram:/data
     environment:
-        BRIDGE_NAME: ${IMESSAGE_PARAMS} sh-telegram
+      <<: *beeper-env
+      BRIDGE_NAME: sh-telegram
 
   whatsapp:
-    extends:
-      file: ./common-services.yml
-      service: beeper-bridge
+    <<: *beeper-base
     container_name: beeper-whatsapp
+    hostname: beeper-whatsapp
     volumes:
       - ${DATA_PATH}/beeper-whatsapp:/data
     environment:
-        BRIDGE_NAME: sh-whatsapp
-
+      <<: *beeper-env
+      BRIDGE_NAME: sh-whatsapp
