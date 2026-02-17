@@ -11,7 +11,8 @@ Once you've cloned this repo, the .env text file needs to be created and contain
 ```
 MATRIX_ACCESS_TOKEN=(set your token here)
 DATA_PATH=/path/to/where/your/volumes/are
-IMESSAGE_PARAMS=--param 'bluebubbles_url=http://localhost:1234' --param 'bluebubbles_password=YOUR_PASSWORD' --param 'imessage_platform=bluebubbles'
+BLUEBUBBLES_URL=http://bluebubbles.host:1234
+BLUEBUBBLES_PW=YOUR_PASSWORD
 ```
 For more information on how to set your iMessage parameters for BlueBubbles, see [this write up](https://rentry.org/beeper_bluebubbles_bridge).
 
