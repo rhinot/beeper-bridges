@@ -12,7 +12,7 @@ read -p "Do you need to generate a new token? (yes/NO): " answer
 # Check the user's answer
 if [[ "$answer" == "yes" || "$answer" == "y" ]]; then
 # Find all executable files in the current directory starting with "bbctl"
-  find . -maxdepth 1 -executable -type f -name "bbctl*" -exec bash -c ' 
+  find . -maxdepth 1 -executable -type f -name "bbctl*" -exec bash -c '
     file="$1"
     if [[ -z "$file" ]]; then
        echo "[ERROR] Please place this script in the same directory as your bbctl executable and re-run." >&2
