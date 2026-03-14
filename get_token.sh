@@ -22,6 +22,8 @@ if [[ "$answer" == "yes" || "$answer" == "y" ]]; then
       # Check the exit status of the command
       if [ $? -ne 0 ]; then
         echo "[ERROR] Command \"$file\" login failed." >&2
+      else
+        break
       fi
     fi
   done
