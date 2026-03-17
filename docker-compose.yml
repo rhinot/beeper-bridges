@@ -1,9 +1,9 @@
-# --- Templates (Top Level) ---
+# --- Templates ---
 x-beeper-base: &beeper-base
   image: ghcr.io/beeper/bridge-manager
   restart: unless-stopped
   networks:
-    - beeper-bridges_default
+    - beeper-bridges
   logging:
     driver: "json-file"
     options:
@@ -18,8 +18,8 @@ x-beeper-env: &beeper-env
 # --- Infrastructure ---
 
 networks:
-  beeper-bridges_default:
-    name: "beeper-bridges_default"
+  beeper-bridges:
+    name: "beeper-bridges"
     driver: bridge
 
 # --- Services ---
